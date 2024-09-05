@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom"
+import ResponsiveMenu from "./ResponsiveNav"
+import { useState } from "react"
 
 export const Navbar = () => {
+  const [open ,setOpen]= useState<boolean>(false)
+  function setnav(){
+    setOpen(!open)
+  }
   return (
     <>
       <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -22,6 +28,7 @@ export const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 17 14"
+              onClick={setnav}
             >
               <path
                 stroke="currentColor"
@@ -44,7 +51,7 @@ export const Navbar = () => {
                 </Link>
               </li>
              <Link to={"/blog/publish"}>
-             <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Publish</button>
+             <button  type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Publish</button>
              
              </Link>
               
@@ -54,6 +61,7 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+      <ResponsiveMenu open={open} setOpen={setOpen}></ResponsiveMenu>
     </>
   )
 }
